@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Lola ❤️</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  font-family:Arial,sans-serif;
+}
+
+body{
+  margin:0;
+  min-height:100vh;
+  background:linear-gradient(180deg,#c97777,#b56b6b,#9f5f5f);
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+  text-align:center;
+  padding:20px 0;
+  overflow-y:auto;
+}
+
+/* ===== Hearts & Cakes ===== */
+.hearts,.cakes{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:10;
+}
+
+.bg-heart{
+  position:absolute;
+  bottom:-60px;
+  font-size:48px;
+  opacity:.45;
+  animation:heartUp linear infinite;
+}
+
+@keyframes heartUp{
+  to{
+    transform:translateY(-120vh);
+    opacity:0;
+  }
+}
+
+.cake{
+  position:absolute;
+  top:-60px;
+  font-size:40px;
+  opacity:.5;
+  animation:cakeDown linear infinite;
+}
+
+@keyframes cakeDown{
+  to{
+    transform:translateY(120vh);
+    opacity:0;
+  }
+}
+
+/* ===== Card ===== */
+.card{
+  background:#0b0b0b;
+  max-width:440px;
+  width:92%;
+  padding:32px;
+  border-radius:26px;
+  box-shadow:
+    0 25px 60px rgba(0,0,0,.7),
+    0 0 60px rgba(255,40,120,.35);
+  position:relative;
+  z-index:5;
+}
+
+/* ===== Entrance Animations ===== */
+@keyframes fromTop{
+  from{opacity:0;transform:translateY(-60px)}
+  to{opacity:1}
+}
+
+@keyframes fromBottom{
+  from{opacity:0;transform:translateY(60px)}
+  to{opacity:1}
+}
+
+@keyframes fromLeft{
+  from{opacity:0;transform:translateX(-60px)}
+  to{opacity:1}
+}
+
+@keyframes fromRight{
+  from{opacity:0;transform:translateX(60px)}
+  to{opacity:1}
+}
+
+.enter-top{animation:fromTop .9s ease}
+.enter-bottom{animation:fromBottom .9s ease}
+.enter-left{animation:fromLeft .9s ease}
+.enter-right{animation:fromRight .9s ease}
+
+/* ===== Text ===== */
+.name{
+  font-size:32px;
+  color:#ff3b8d;
+  text-shadow:0 0 18px rgba(255,59,141,.8);
+}
+
+.subtitle{
+  color:#ffc9da;
+  line-height:1.8;
+}
+
+/* ===== Slider ===== */
+.slider{
+  width:100%;
+  height:360px;
+  margin:20px 0;
+  overflow:hidden;
+  position:relative;
+}
+
+.slides{
+  position:relative;
+  height:100%;
+}
+
+.heart-img{
+  position:absolute;
+  inset:0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  opacity:0;
+  animation:fadeSlide 18s infinite;
+}
+
+.heart-img:nth-child(1){animation-delay:0s}
+.heart-img:nth-child(2){animation-delay:6s}
+.heart-img:nth-child(3){animation-delay:12s}
+
+@keyframes fadeSlide{
+  0%{opacity:0}
+  12%{opacity:1}
+  38%{opacity:1}
+  50%{opacity:0}
+  100%{opacity:0}
+}
+
+.heart-img img{
+  width:220px;
+  height:280px;
+  object-fit:cover;
+  border-radius:18px;
+  box-shadow:0 0 40px rgba(255,40,120,.45);
+}
+
+/* ===== Counter ===== */
+.box{
+  background:rgba(120,35,65,.9);
+  padding:18px;
+  border-radius:22px;
+  margin-top:14px;
+  color:#ffd1e3;
+}
+
+.big{
+  font-size:22px;
+  color:#ff9fc4;
+  font-weight:bold;
+}
+
+.small{
+  font-size:14px;
+  color:#ffd9e7;
+}
+
+/* ===== Birthday Message ===== */
+.message{
+  background:rgba(120,35,65,.9);
+  padding:20px;
+  border-radius:22px;
+  margin-top:18px;
+  color:#ffd1e3;
+  font-size:15px;
+  line-height:2;
+  text-align:center;
+  white-space:normal;
+  overflow-wrap:break-word;
+  box-shadow:0 0 25px rgba(255,40,120,.12);
+}
+
+.message p{
+  margin:0 0 16px;
+}
+
+.message p:last-child{
+  margin-bottom:0;
+}
+
+.english-message{
+  color:#ff9fc4;
+  font-weight:bold;
+  direction:ltr;
+  line-height:1.8;
+  margin-top:20px !important;
+}
+
+.signature{
+  margin-top:22px;
+  color:#ffb6d2;
+  font-size:14px;
+  line-height:1.8;
+}
+</style>
+</head>
+
+<body>
+
+<div class="cakes" id="cakes"></div>
+<div class="hearts" id="hearts"></div>
+
+<div class="card">
+
+  <h1 class="name enter-top">Lola ❤️</h1>
+
+  <p class="subtitle enter-bottom">
+    أجمل إنسانة في الكون 😘🌎
+    <br>
+    بنوتي وحتة من قلبي ❤️🥹
+  </p>
+
+  <div class="slider enter-right">
+    <div class="slides">
+
+      <div class="heart-img">
+        <img src="photo1.jpg" alt="صورتنا الأولى">
+      </div>
+
+      <div class="heart-img">
+        <img src="photo2.jpg" alt="صورتنا الثانية">
+      </div>
+
+      <div class="heart-img">
+        <img src="photo3.jpg" alt="صورتنا الثالثة">
+      </div>
+
+    </div>
+  </div>
+
+  <div class="box enter-left">
+    <div class="big" id="days"></div>
+    <div class="small">أيام صداقتنا 💕</div>
+  </div>
+
+  <div class="message enter-bottom">
+
+    <p>
+      كل سنة وانتي طيبة يا بنوتي ويا حتة من قلبي،
+      ويا أجمل حاجة حصلتلي في حياتي كلها ❤️🥹🎂
+    </p>
+
+    <p>
+      النهارده مش يوم عادي، النهارده عيد ميلاد أغلى وأحن وأجمل بنت في عيني،
+      بنت قلبي وحبيبتي وخطيبتي ومراتي بإذن الله ❤️💍🫂
+    </p>
+
+    <p>
+      كل سنة وانتي معايا، وكل سنة وأنا شايف ضحكتك اللي بتنسيني الدنيا وما فيها،
+      وكل سنة وانتي أقرب واحدة لقلبي، وأجمل نصيب وأحلى قدر ربنا كتبهولي. 🥹❤️
+    </p>
+
+    <p>
+      يا بنوتي، يمكن مش بعرف أوصفلك كل اللي جوايا،
+      بس والله انتي ليكي في قلبي مكان محدش يقدر ياخده،
+      ونفسي أفضل جنبك في كل أعياد ميلادك الجاية،
+      وأكون أنا أول واحد يقولك كل سنة وانتي طيبة،
+      وأشوف فرحتك بعيني، وأفضل سبب في ضحكتك طول العمر. 🫶🏻❤️
+    </p>
+
+    <p>
+      ونفسي ييجي اليوم اللي أقولك فيه كل سنة وانتي طيبة يا مراتي،
+      ونحتفل وإحنا في بيتنا، وتبقي كل أعياد ميلادك معايا،
+      ونفتكر الأيام دي ونضحك ونقول إننا كنا بنحلم باليوم ده،
+      وربنا حقق لنا حلمنا. 🏡💍❤️
+    </p>
+
+    <p>
+      كل سنة وانتي حبيبتي، وكل سنة وانتي بنوتي،
+      وكل سنة وانتي نصيبي الحلو، وكل سنة وانتي معايا وليا،
+      وربنا ما يحرمنيش منك أبدًا ويجمعني بيكي في الحلال
+      ويخليكي ليا العمر كله. 🥹🤍
+    </p>
+
+    <p>
+      بحبك يا بنوتي أكتر من الكلام،
+      وعقبال مليون سنة وانتي في حضني ومعايا،
+      يا أجمل عيد ميلاد لأجمل بنت في الدنيا كلها. 🎂❤️🫂
+    </p>
+
+    <p class="english-message">
+      Happy Birthday, My Baby Girl 🎂🎀❤️
+      <br>
+      My Future Wife, My Forever Love 💍♾️❤️
+    </p>
+
+  </div>
+
+  <div class="signature enter-bottom">
+    بكل الحب ليكي يا بنوتي ❤️🫂
+  </div>
+
+</div>
+
+<script>
+/* ===== Friendship Counter ===== */
+// بداية الصداقة: 12 سبتمبر 2025
+const daysElement = document.getElementById("days");
+const start = new Date(2025, 8, 12, 0, 0, 0);
+
+function updateCounter(){
+  const diff = new Date() - start;
+
+  const totalDays = Math.floor(diff / 86400000);
+  const hours = Math.floor(diff / 3600000) % 24;
+  const minutes = Math.floor(diff / 60000) % 60;
+
+  daysElement.textContent =
+    totalDays + " يوم • " +
+    hours + " ساعة • " +
+    minutes + " دقيقة";
+}
+
+updateCounter();
+setInterval(updateCounter, 1000);
+
+/* ===== Floating Hearts ===== */
+setInterval(()=>{
+  const h = document.createElement("div");
+  h.className = "bg-heart";
+  h.textContent = "❤️";
+  h.style.left = Math.random() * 100 + "vw";
+  h.style.animationDuration = 6 + Math.random() * 6 + "s";
+
+  document.getElementById("hearts").appendChild(h);
+
+  setTimeout(()=>h.remove(), 12000);
+}, 400);
+
+/* ===== Falling Birthday Cakes ===== */
+setInterval(()=>{
+  const c = document.createElement("div");
+  c.className = "cake";
+  c.textContent = "🎂";
+  c.style.left = Math.random() * 100 + "vw";
+  c.style.animationDuration = 6 + Math.random() * 6 + "s";
+
+  document.getElementById("cakes").appendChild(c);
+
+  setTimeout(()=>c.remove(), 12000);
+}, 600);
+</script>
+
+</body>
+</html>
