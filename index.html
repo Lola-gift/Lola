@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Lola ♥️</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  font-family:'Arial',sans-serif;
+}
+
+body{
+  margin:0;
+  min-height:100vh;
+  background:linear-gradient(135deg,#d87a7a,#9c5b5b);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
+}
+
+.hearts{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:1;
+}
+
+.heart{
+  position:absolute;
+  bottom:-20px;
+  color:rgba(255,255,255,.25);
+  font-size:16px;
+  animation:floatUp linear infinite;
+}
+
+@keyframes floatUp{
+  from{transform:translateY(0);opacity:.6}
+  to{transform:translateY(-120vh);opacity:0}
+}
+
+.card{
+  background:#0f0f0f;
+  width:calc(100% - 36px);
+  max-width:360px;
+  padding:35px;
+  border-radius:26px;
+  text-align:center;
+  box-shadow:0 25px 60px rgba(0,0,0,.6),
+             0 0 40px rgba(255,79,135,.25);
+  animation:fadeUp .8s ease;
+  position:relative;
+  overflow:hidden;
+  z-index:5;
+}
+
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(30px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+.title{
+  font-size:28px;
+  color:#ff4f87;
+  margin-bottom:10px;
+  animation:pulse 1.8s infinite alternate;
+  text-shadow:0 0 12px rgba(255,79,135,.6),
+              0 0 28px rgba(255,79,135,.8);
+}
+
+.title span{
+  display:inline-block;
+  animation:heartBeat 1.2s infinite;
+}
+
+@keyframes pulse{
+  to{transform:scale(1.06)}
+}
+
+@keyframes heartBeat{
+  50%{transform:scale(1.3)}
+}
+
+.counter{
+  margin:18px 0;
+  padding:16px 10px;
+  border-radius:20px;
+  background:rgba(255,79,135,.18);
+  color:#ff6f9f;
+  font-weight:bold;
+  font-size:15px;
+  position:relative;
+  overflow:hidden;
+  animation:counterPulse 2s infinite ease-in-out;
+  box-shadow:0 0 20px rgba(255,79,135,.35);
+}
+
+@keyframes counterPulse{
+  50%{transform:scale(1.04)}
+}
+
+.counter::before{
+  content:"";
+  position:absolute;
+  inset:-2px;
+  background:
+    radial-gradient(circle at 20% 30%,#fff 0 2px,transparent 3px),
+    radial-gradient(circle at 70% 60%,#fff 0 2px,transparent 3px),
+    radial-gradient(circle at 40% 80%,#fff 0 2px,transparent 3px);
+  animation:glitter 2s linear infinite;
+  opacity:.4;
+  pointer-events:none;
+}
+
+@keyframes glitter{
+  from{transform:translateX(-20px)}
+  to{transform:translateX(20px)}
+}
+
+.birthday{
+  animation:shake .4s infinite;
+}
+
+@keyframes shake{
+  25%{transform:translateX(2px)}
+  50%{transform:translateX(-2px)}
+  75%{transform:translateX(2px)}
+}
+
+p{
+  font-size:14px;
+  color:#cfcfcf;
+}
+
+input{
+  width:100%;
+  padding:13px;
+  margin-top:12px;
+  border-radius:14px;
+  border:none;
+  background:#3a3a3a;
+  color:#fff;
+  font-size:15px;
+}
+
+input::placeholder{
+  color:#aaa;
+}
+
+button{
+  margin-top:18px;
+  width:100%;
+  padding:14px;
+  border:none;
+  border-radius:16px;
+  background:#ff1e6e;
+  color:#fff;
+  font-size:16px;
+  cursor:pointer;
+  transition:.3s;
+  box-shadow:0 8px 25px rgba(255,30,110,.5),
+             0 0 30px rgba(255,30,110,.6);
+}
+
+button:hover{
+  transform:scale(1.05);
+}
+
+.msg{
+  margin-top:12px;
+  color:#ff6f9f;
+  font-size:14px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="hearts" id="hearts"></div>
+
+<div class="card">
+  <h1 class="title">
+    Hello Lola <span>❤️</span>
+  </h1>
+
+  <div class="counter" id="birthdayCounter"></div>
+
+  <p>
+    Enter your secret access
+    <br>
+    <small>ادخلي كلمة السر الخاصة</small>
+  </p>
+
+  <input id="user" placeholder="Username" autocomplete="off">
+  <input id="pass" type="password" placeholder="Password">
+
+  <button onclick="login()">Enter</button>
+  <div class="msg" id="msg"></div>
+</div>
+
+<script>
+/* ===== Login ===== */
+function login(){
+  const user = document.getElementById("user").value.trim();
+  const pass = document.getElementById("pass").value.trim();
+  const msg = document.getElementById("msg");
+
+  if(user === "Lola" && pass === "2009.10.29"){
+    window.location.href = "gift.html";
+  }else{
+    msg.textContent = "❌ Not correct 💔 Try again";
+  }
+}
+
+/* ===== Countdown to October 29 at Midnight ===== */
+const counter = document.getElementById("birthdayCounter");
+
+function updateBirthday(){
+  const now = new Date();
+
+  // October = 9, day = 29, time = 00:00
+  let birthday = new Date(
+    now.getFullYear(), 9, 29, 0, 0, 0
+  );
+
+  // If this year's birthday has passed, use next year
+  if(now >= birthday &&
+     !(now.getMonth() === 9 && now.getDate() === 29)){
+    birthday = new Date(
+      now.getFullYear() + 1, 9, 29, 0, 0, 0
+    );
+  }
+
+  // Birthday has arrived
+  if(now.getMonth() === 9 && now.getDate() === 29){
+    counter.textContent = "🎉 Happy Birthday Lola 🎂❤️";
+    counter.classList.add("birthday");
+    return;
+  }
+
+  counter.classList.remove("birthday");
+
+  const diff = birthday.getTime() - now.getTime();
+
+  const totalHours = Math.floor(diff / (1000 * 60 * 60));
+  const minutes = Math.floor((diff / (1000 * 60)) % 60);
+
+  counter.textContent =
+    `🎂 ${totalHours} Hours • ${minutes} Minutes ❤️`;
+}
+
+updateBirthday();
+setInterval(updateBirthday, 1000);
+
+/* ===== Floating Hearts ===== */
+setInterval(()=>{
+  const h = document.createElement("div");
+  h.className = "heart";
+  h.textContent = "❤️";
+  h.style.left = Math.random() * 100 + "vw";
+  h.style.fontSize = 12 + Math.random() * 12 + "px";
+  h.style.animationDuration = 8 + Math.random() * 6 + "s";
+
+  document.getElementById("hearts").appendChild(h);
+
+  setTimeout(()=>h.remove(),14000);
+},600);
+</script>
+
+</body>
+</html>
